@@ -1,0 +1,31 @@
+head {
+    text-align: center;
+    font-size: 20px;
+    color : rgb(39, 39, 60);
+  
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+h1 {
+    font-style: italic;
+    font-size: 40px;
+    color:blue;
+    text-align: center;
+}
+p{
+    text-align: center;
+}
+body {
+    background-color: lightblue;
+
+
+}
+h2 {
+    text-align: center;
+    color: rgb(39, 39, 60); 
+
+}
+button {
+    display: block;
+    margin: auto;
+}

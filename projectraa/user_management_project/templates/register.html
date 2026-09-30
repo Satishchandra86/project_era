@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - UserHub</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<nav>
+    <a class="brand" href="{{ url_for('index') }}">UserHub</a>
+    <div><a href="{{ url_for('login') }}">Login</a></div>
+</nav>
+
+<main class="form-page">
+    <div class="card">
+        <h2>Create Account</h2>
+        <p class="muted">Enter your details to create an account.</p>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% for category, message in messages %}
+                <div class="alert {{ category }}">{{ message }}</div>
+            {% endfor %}
+        {% endwith %}
+
+        <form method="POST" id="registerForm">
+            <div class="grid">
+                <label>Name
+                    <input type="text" name="name" required maxlength="100">
+                </label>
+
+                <label>Email
+                    <input type="email" name="email" required maxlength="150">
+                </label>
+
+                <label>Phone
+                    <input type="tel" name="phone" required pattern="[0-9]{10}" maxlength="10"
+                           title="Enter a 10-digit phone number">
+                </label>
+
+                <label>Date of Birth
+                    <input type="date" name="dob" required>
+                </label>
+
+                <label>Gender
+                    <select name="gender" required>
+                        <option value="">Select</option>
+                        <option>Male</option>
+                        <option>Female</option>
+                        <option>Other</option>
+                    </select>
+                </label>
+
+                <label>City
+                    <input type="text" name="city" required maxlength="100">
+                </label>
+            </div>
+
+            <label>Password
+                <input type="password" id="password" name="password" required minlength="6">
+            </label>
+
+            <label>Confirm Password
+                <input type="password" id="confirm_password" name="confirm_password" required minlength="6">
+            </label>
+
+            <button class="button" type="submit">Register</button>
+        </form>
+
+        <p class="center">Already have an account? <a href="{{ url_for('login') }}">Login</a></p>
+    </div>
+</main>
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

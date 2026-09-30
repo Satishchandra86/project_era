@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Management System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<nav>
+    <a class="brand" href="{{ url_for('index') }}">UserHub</a>
+    <div>
+        {% if user %}
+            <a href="{{ url_for('dashboard') }}">Dashboard</a>
+            <a href="{{ url_for('users') }}">Users</a>
+            <a href="{{ url_for('logout') }}">Logout</a>
+        {% else %}
+            <a href="{{ url_for('login') }}">Login</a>
+            <a class="nav-button" href="{{ url_for('register') }}">Register</a>
+        {% endif %}
+    </div>
+</nav>
+
+<main class="hero">
+    <section>
+        <p class="tag">PYTHON + FLASK + SQLITE + JAVASCRIPT</p>
+        <h1>User Management System</h1>
+        <p class="subtitle">
+            A complete beginner-friendly full-stack project with registration,
+            secure password hashing, login, sessions and database storage.
+        </p>
+        <div class="actions">
+            {% if user %}
+                <a class="button" href="{{ url_for('dashboard') }}">Open Dashboard</a>
+            {% else %}
+                <a class="button" href="{{ url_for('register') }}">Create Account</a>
+                <a class="button secondary" href="{{ url_for('login') }}">Login</a>
+            {% endif %}
+        </div>
+    </section>
+</main>
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users - UserHub</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<nav>
+    <a class="brand" href="{{ url_for('index') }}">UserHub</a>
+    <div>
+        <a href="{{ url_for('dashboard') }}">Dashboard</a>
+        <a href="{{ url_for('logout') }}">Logout</a>
+    </div>
+</nav>
+
+<main class="table-page">
+    <div class="card wide">
+        <h2>Registered Users</h2>
+        <p class="muted">Password hashes are intentionally not displayed.</p>
+
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th><th>Name</th><th>Email</th><th>Phone</th>
+                        <th>DOB</th><th>Gender</th><th>City</th><th>Created</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in users %}
+                    <tr>
+                        <td>{{ user["id"] }}</td>
+                        <td>{{ user["name"] }}</td>
+                        <td>{{ user["email"] }}</td>
+                        <td>{{ user["phone"] }}</td>
+                        <td>{{ user["dob"] }}</td>
+                        <td>{{ user["gender"] }}</td>
+                        <td>{{ user["city"] }}</td>
+                        <td>{{ user["created_at"] }}</td>
+                    </tr>
+                    {% else %}
+                    <tr><td colspan="8" class="center">No users found.</td></tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>
+</body>
+</html>
